@@ -1,16 +1,15 @@
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardTitle,
   CardHeader,
   CardFooter,
 } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
 import ProductPrice from "./product-price";
+import { Product } from "@/types";
 
-const ProductCard = ({ product }: { product: any }) => {
+const ProductCard = ({ product }: { product: Product }) => {
   console.log(product);
 
   return (
