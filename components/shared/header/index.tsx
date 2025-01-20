@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Menu from "./menu";
@@ -7,7 +8,14 @@ import { APP_NAME } from "@/lib/constants";
 import { useTheme } from "next-themes";
 
 const Header = () => {
-  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const { theme, systemTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
 
   return (
     <header className="w-full border-b">
@@ -16,8 +24,8 @@ const Header = () => {
           <Link href="/" className="flex-start">
             <Image
               src={
-                theme === "light"
-                  ? "/images/ansible-logo.png"
+                theme === "light" || systemTheme === "light"
+                  ? "/images/ansible-logo-light.png"
                   : "/images/ansible-logo-dark.png"
               }
               alt={`${APP_NAME} logo`}

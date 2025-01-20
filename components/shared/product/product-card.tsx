@@ -10,8 +10,6 @@ import ProductPrice from "./product-price";
 import { Product } from "@/types";
 
 const ProductCard = ({ product }: { product: Product }) => {
-  console.log(product);
-
   return (
     <Card className="w-full max-w-sm m-3">
       <CardHeader className="p-0 items-center">

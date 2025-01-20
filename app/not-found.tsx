@@ -5,13 +5,13 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 
 const NotFoundPage = () => {
-  const { theme } = useTheme();
+  const { theme, systemTheme } = useTheme();
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <Image
         src={
-          theme === "light"
-            ? "/images/ansible-logo.png"
+          theme === "light" || systemTheme === "light"
+            ? "/images/ansible-logo-light.png"
             : "/images/ansible-logo-dark.png"
         }
         priority={true}
