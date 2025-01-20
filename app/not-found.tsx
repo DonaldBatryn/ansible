@@ -2,12 +2,18 @@
 import Image from "next/image";
 import { APP_NAME } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "next-themes";
 
 const NotFoundPage = () => {
+  const { theme } = useTheme();
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <Image
-        src="/images/logo.svg"
+        src={
+          theme === "light"
+            ? "/images/ansible-logo.png"
+            : "/images/ansible-logo-dark.png"
+        }
         priority={true}
         alt={`${APP_NAME} logo`}
         height={48}
