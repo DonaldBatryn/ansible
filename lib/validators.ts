@@ -21,3 +21,9 @@ export const insertProductSchema = z.object({
   banner: z.string().nullable(),
   price: currency,
 });
+
+export const insertUserSchema = z.object({
+  name: z.string().min(3, "Name must be at least 3 characters"),
+  email: z.string().min(3, "Email must be at least 3 characters"),
+  password: z.string().min(3, "Password must be at least 3 characters"),
+}); // EXPERIMENT
