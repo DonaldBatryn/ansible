@@ -25,6 +25,7 @@ export const config = {
         email: { type: "email" },
         password: { type: "password" },
       },
+      // @ts-expect-error we'll figure this one out in a bit
       async authorize(credentials) {
         if (credentials === null) return null;
 
@@ -44,8 +45,8 @@ export const config = {
           if (isMatch)
             return {
               id: user.id,
-              email: user.email,
               name: user.name,
+              email: user.email,
               role: user.role,
             };
 
@@ -57,7 +58,7 @@ export const config = {
   ],
   callbacks: {
     async session({ session, user, trigger, token }: any) {
-      // Set userId from token
+      // Set user.id from token
       session.user.id = token.sub;
 
       // If update, set user name

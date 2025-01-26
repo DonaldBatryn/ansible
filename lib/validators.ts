@@ -22,8 +22,8 @@ export const insertProductSchema = z.object({
   price: currency,
 });
 
-export const insertUserSchema = z.object({
-  name: z.string().min(3, "Name must be at least 3 characters"),
-  email: z.string().min(3, "Email must be at least 3 characters"),
-  password: z.string().min(3, "Password must be at least 3 characters"),
-}); // EXPERIMENT
+// Schema for user sign-in
+export const singInFormSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least six characters"),
+});
