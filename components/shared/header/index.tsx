@@ -7,7 +7,7 @@ import Menu from "./menu";
 import { APP_NAME } from "@/lib/constants";
 import { useTheme } from "next-themes";
 
-const Header = () => {
+const Header = ({ session }: { session: any }) => {
   const [mounted, setMounted] = useState(false);
   const { theme, systemTheme } = useTheme();
 
@@ -38,7 +38,7 @@ const Header = () => {
             </span>
           </Link>
         </div>
-        <Menu />
+        <Menu session={session} />
       </div>
     </header>
   );

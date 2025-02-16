@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { auth } from "@/auth";
 import { signOutUser } from "@/lib/actions/user.actions";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,9 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { UserIcon } from "lucide-react";
 
-const UserButton = async () => {
-  const session = await auth();
-  console.log("session: ", session);
+const UserButton = async ({ session }) => {
   if (!session) {
     return (
       <Button asChild>
@@ -50,7 +47,16 @@ const UserButton = async () => {
               </div>
             </div>
           </DropdownMenuLabel>
-          <DropdownMenuItem></DropdownMenuItem>
+          <DropdownMenuItem className="p-0 mb-1">
+            <form action={signOutUser} className="w-full">
+              <Button
+                className="w-full py-4 px-2 h-4 justify-start"
+                variant="ghost"
+              >
+                Sign Out
+              </Button>
+            </form>
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
